@@ -1,0 +1,10 @@
+{
+  "item.molten_netherite.crystal_shard": "Crystal Shard",
+  "item.molten_netherite.dragon_crystal": "Dragon Crystal",
+  "item.molten_netherite.dragons_blade": "Dragons Blade",
+
+  "block.molten_netherite.crystal_ore": "Crystal Ore",
+
+  "creativetab.molten_netherite.crystal_items_tab": "Crystal Items",
+  "creativetab.molten_netherite.crystal_blocks_tab": "Crystal Blocks"
+}

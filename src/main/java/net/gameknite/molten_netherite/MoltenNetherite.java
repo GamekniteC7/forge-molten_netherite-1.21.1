@@ -1,12 +1,17 @@
 package net.gameknite.molten_netherite;
 
 import com.mojang.logging.LogUtils;
+import net.gameknite.molten_netherite.block.ModBlocks;
+import net.gameknite.molten_netherite.item.ModCreativeModeTabs;
+import net.gameknite.molten_netherite.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,19 +29,20 @@ public class MoltenNetherite
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public MoltenNetherite(FMLJavaModLoadingContext context) {
-        IEventBus modEventBus = context.getModEventBus();
-
-        // Register the commonSetup method for modloading
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        ModCreativeModeTabs.register(modEventBus);
 
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+
+        // Register item to a creative tab
+        modEventBus.addListener(this::addCreative);
+        //Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -45,7 +51,15 @@ public class MoltenNetherite
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.CRYSTAL_SHARD);
+            event.accept(ModItems.DRAGONS_BLADE);
+            event.accept(ModItems.DRAGON_CRYSTAL);
+        }
 
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.CRYSTAL_ORE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
