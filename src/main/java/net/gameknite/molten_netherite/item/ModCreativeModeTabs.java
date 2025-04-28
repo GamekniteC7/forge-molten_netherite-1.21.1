@@ -21,6 +21,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRYSTAL_SHARD.get());
                         output.accept(ModItems.DRAGON_CRYSTAL.get());
                         output.accept(ModItems.DRAGONS_BLADE.get());
+                        output.accept(ModItems.CRYSTALLIZED_GOLDEN_APPLE.get());
+                        output.accept(ModItems.CRYSTAL_ASHES.get());
                     })
 
                     .build());

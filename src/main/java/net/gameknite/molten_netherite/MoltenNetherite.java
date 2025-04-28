@@ -51,15 +51,7 @@ public class MoltenNetherite
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.CRYSTAL_SHARD);
-            event.accept(ModItems.DRAGONS_BLADE);
-            event.accept(ModItems.DRAGON_CRYSTAL);
-        }
 
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModBlocks.CRYSTAL_ORE);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

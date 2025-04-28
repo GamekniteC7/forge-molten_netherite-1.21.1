@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+    "textures": {
+        "layer0": "molten_netherite:item/crystallized_golden_apple"
+    }
+}

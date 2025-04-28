@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "molten_netherite:crystal_shard"
+  },
+  "result": {
+    "id": "molten_netherite:crystal_ashes"
+  }
+}
